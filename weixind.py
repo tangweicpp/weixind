@@ -334,8 +334,13 @@ _weixin_text_command_table = {
     'pc'                    :   _do_text_command_pc,
     'ss'                    :   _do_text_command_ss,
 }
-
-
+'''
+def cpu_temp():
+    import dht11
+    c, g = _cpu_and_gpu_temp()
+#    reply_msg = u'CPU : %.02f℃\nGPU : %.02f℃\n湿度 : %02.02f\n温度 : %02.02f' %(c, g, h, t)
+    return (c, g)
+'''
 class weixinserver:
 
     def __init__(self):
@@ -356,8 +361,13 @@ class weixinserver:
                 content = content.encode('UTF-8')
         if content[0] == ',':
             return _do_text_command(self, fromUser, toUser, content[1:])
-        reply_msg = fanyi.youdao(content)
+            
+        if content == 'cg':
+            c, g = _cpu_and_gpu_temp()
+            reply_msg = u'CPU : %.02f℃\nGPU : %.02f℃\n' %(c, g)
+            return self._reply_text(fromUser, toUser, reply_msg)
         
+        reply_msg = fanyi.youdao(content)
         return self._reply_text(fromUser, toUser, reply_msg)
 
     def _recv_event(self, fromUser, toUser, doc):
