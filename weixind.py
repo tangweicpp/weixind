@@ -18,7 +18,7 @@ from weixin import APIError
 from weixin import AccessTokenError
 
 
-_TOKEN = 'my_token'
+_TOKEN = 'tangxiaowei'
 _URLS = (
     '/weixin', 'weixinserver',
 )
