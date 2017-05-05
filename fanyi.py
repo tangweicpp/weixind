@@ -4,7 +4,8 @@ import json
 
 def youdao(word):
     qword = urllib2.quote(word)
-    baseurl =r'http://fanyi.youdao.com/openapi.do?keyfrom=tangweicppfanyi&key=1582189909&type=data&doctype=json&version=1.1&q='
+    baseurl =r'http://fanyi.youdao.com/openapi.do?keyfrom=RaspberryPi3&key=393426096&type=data&doctype=json&version=1.1&q='
+    
     url = baseurl+qword
     resp = urllib2.urlopen(url)
     fanyi = json.loads(resp.read())
