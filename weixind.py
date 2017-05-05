@@ -10,6 +10,7 @@ import time
 import types
 import hashlib
 import base64
+import fanyi
 import memcache
 import RPi.GPIO as GPIO
 from lxml import etree
@@ -353,7 +354,8 @@ class weixinserver:
         content = doc.find('Content').text
         if content[0] == ',':
             return _do_text_command(self, fromUser, toUser, content[1:])
-        reply_msg = content
+        reply_msg = fanyi.youdao(content)
+        
         return self._reply_text(fromUser, toUser, reply_msg)
 
     def _recv_event(self, fromUser, toUser, doc):
