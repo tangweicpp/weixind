@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+
 from ctypes import *
 
 libsp = CDLL("/home/pi/source/weixind/libdht11.so")
