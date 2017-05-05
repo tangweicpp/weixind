@@ -352,6 +352,8 @@ class weixinserver:
 
     def _recv_text(self, fromUser, toUser, doc):
         content = doc.find('Content').text
+        if type(content).__name__ == "unicode":
+                content = content.encode('UTF-8')
         if content[0] == ',':
             return _do_text_command(self, fromUser, toUser, content[1:])
         reply_msg = fanyi.youdao(content)
